@@ -1,0 +1,183 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TMSAPIModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Agent">
+    <Key>
+      <PropertyRef Name="agentid" />
+    </Key>
+    <Property Name="agentid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="agentmail" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="agentname" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="agentcontact" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Booking">
+    <Key>
+      <PropertyRef Name="bookingid" />
+    </Key>
+    <Property Name="bookingid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="clientid" Type="Int32" Nullable="false" />
+    <Property Name="packageid" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Client" Relationship="Self.FK_Booking_Client" FromRole="Booking" ToRole="Client" />
+    <NavigationProperty Name="Package" Relationship="Self.FK_Booking_Package" FromRole="Booking" ToRole="Package" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="clientid" />
+    </Key>
+    <Property Name="clientid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="clientemail" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="clientname" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="clientcontact" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="username" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Bookings" Relationship="Self.FK_Booking_Client" FromRole="Client" ToRole="Booking" />
+    <NavigationProperty Name="Tokens" Relationship="Self.FK_Token_Client" FromRole="Client" ToRole="Token" />
+  </EntityType>
+  <EntityType Name="Host">
+    <Key>
+      <PropertyRef Name="hostid" />
+    </Key>
+    <Property Name="hostid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="address" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="mobilenumber" Type="String" MaxLength="11" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Users" Relationship="Self.FK_User_Host" FromRole="Host" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Hotel">
+    <Key>
+      <PropertyRef Name="hotelid" />
+    </Key>
+    <Property Name="hotelid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="hoteltype" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hotellocation" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hotelprice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Hotelbox">
+    <Key>
+      <PropertyRef Name="hotelboxid" />
+    </Key>
+    <Property Name="hotelboxid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="agentid" Type="Int32" Nullable="false" />
+    <Property Name="hotelid" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Package">
+    <Key>
+      <PropertyRef Name="packageid" />
+    </Key>
+    <Property Name="packageid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="packagetype" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="packagelocation" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="eventtime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="packageprice" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Bookings" Relationship="Self.FK_Booking_Package" FromRole="Package" ToRole="Booking" />
+  </EntityType>
+  <EntityType Name="Token">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="clientid" Type="Int32" Nullable="false" />
+    <Property Name="tokenaccess" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Createdat" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Expireat" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Client" Relationship="Self.FK_Token_Client" FromRole="Token" ToRole="Client" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="userid" />
+    </Key>
+    <Property Name="userid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="usertype" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="usermail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="hostid" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Host" Relationship="Self.FK_User_Host" FromRole="User" ToRole="Host" />
+  </EntityType>
+  <EntityType Name="Userbox">
+    <Key>
+      <PropertyRef Name="userboxid" />
+    </Key>
+    <Property Name="userboxid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="hostid" Type="Int32" Nullable="false" />
+    <Property Name="userid" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Booking_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="clientid" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="clientid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Booking_Package">
+    <End Role="Package" Type="Self.Package" Multiplicity="1" />
+    <End Role="Booking" Type="Self.Booking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Package">
+        <PropertyRef Name="packageid" />
+      </Principal>
+      <Dependent Role="Booking">
+        <PropertyRef Name="packageid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Token_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="Token" Type="Self.Token" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="clientid" />
+      </Principal>
+      <Dependent Role="Token">
+        <PropertyRef Name="clientid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Host">
+    <End Role="Host" Type="Self.Host" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Host">
+        <PropertyRef Name="hostid" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="hostid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TMSAPIEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Agents" EntityType="Self.Agent" />
+    <EntitySet Name="Bookings" EntityType="Self.Booking" />
+    <EntitySet Name="Clients" EntityType="Self.Client" />
+    <EntitySet Name="Hosts" EntityType="Self.Host" />
+    <EntitySet Name="Hotels" EntityType="Self.Hotel" />
+    <EntitySet Name="Hotelboxes" EntityType="Self.Hotelbox" />
+    <EntitySet Name="Packages" EntityType="Self.Package" />
+    <EntitySet Name="Tokens" EntityType="Self.Token" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <EntitySet Name="Userboxes" EntityType="Self.Userbox" />
+    <AssociationSet Name="FK_Booking_Client" Association="Self.FK_Booking_Client">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="Booking" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Booking_Package" Association="Self.FK_Booking_Package">
+      <End Role="Package" EntitySet="Packages" />
+      <End Role="Booking" EntitySet="Bookings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Token_Client" Association="Self.FK_Token_Client">
+      <End Role="Client" EntitySet="Clients" />
+      <End Role="Token" EntitySet="Tokens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Host" Association="Self.FK_User_Host">
+      <End Role="Host" EntitySet="Hosts" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

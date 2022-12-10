@@ -86,9 +86,12 @@
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Auth\ClientAuth.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AgentController.cs" />
     <Compile Include="Controllers\AuthController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\HotelController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

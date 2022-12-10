@@ -29,7 +29,6 @@ namespace DAL.EF
         [Required]
         [StringLength(8)]
         public string password { get; set; }
-        
         public string clientname { get; set; }
         [Required]
         [StringLength(11)]

@@ -47,9 +47,9 @@ namespace DAL.Repo
             return db.Tokens.FirstOrDefault(c => c.tokenaccess== id);
         }
         */
-        TMSAPIEntities db;
+        TMSAPIEntities1 db;
 
-        public TokenRepo(TMSAPIEntities db)
+        public TokenRepo(TMSAPIEntities1 db)
         {
             this.db = db;
         }

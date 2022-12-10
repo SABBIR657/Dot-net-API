@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="TMSAPIModelStoreContainer" CdmEntityContainer="TMSAPIEntities">
+  <EntityContainerMapping StorageEntityContainer="TMSAPIModelStoreContainer" CdmEntityContainer="TMSAPIEntities1">
     <EntitySetMapping Name="Agents">
       <EntityTypeMapping TypeName="TMSAPIModel.Agent">
         <MappingFragment StoreEntitySet="Agent">
@@ -94,7 +94,6 @@
           <ScalarProperty Name="usertype" ColumnName="usertype" />
           <ScalarProperty Name="usermail" ColumnName="usermail" />
           <ScalarProperty Name="username" ColumnName="username" />
-          <ScalarProperty Name="hostid" ColumnName="hostid" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -104,6 +103,17 @@
           <ScalarProperty Name="userboxid" ColumnName="userboxid" />
           <ScalarProperty Name="hostid" ColumnName="hostid" />
           <ScalarProperty Name="userid" ColumnName="userid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Logins">
+      <EntityTypeMapping TypeName="TMSAPIModel.Login">
+        <MappingFragment StoreEntitySet="Logins">
+          <ScalarProperty Name="Expiredate" ColumnName="Expiredate" />
+          <ScalarProperty Name="Createdate" ColumnName="Createdate" />
+          <ScalarProperty Name="loginaccess" ColumnName="loginaccess" />
+          <ScalarProperty Name="hostid" ColumnName="hostid" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

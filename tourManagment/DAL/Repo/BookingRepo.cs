@@ -10,9 +10,9 @@ namespace DAL.Repo
 {
     public class BookingRepo : IBookingRepo<Booking, int>
     {
-        TMSAPIEntities db;
+        TMSAPIEntities1 db;
 
-        public BookingRepo(TMSAPIEntities db)
+        public BookingRepo(TMSAPIEntities1 db)
         {
             this.db = db;
         }

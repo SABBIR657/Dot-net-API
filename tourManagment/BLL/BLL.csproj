@@ -45,16 +45,24 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="DTOs\AdminModel.cs" />
     <Compile Include="DTOs\AgentModel.cs" />
     <Compile Include="DTOs\BookingModel.cs" />
     <Compile Include="DTOs\ClientModel.cs" />
+    <Compile Include="DTOs\HotelModel.cs" />
+    <Compile Include="DTOs\LoginDTO.cs" />
     <Compile Include="DTOs\PackageModel.cs" />
     <Compile Include="DTOs\TokenModel.cs" />
+    <Compile Include="DTOs\UserDTO.cs" />
     <Compile Include="DTOs\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\AdminLoginServices.cs" />
+    <Compile Include="Services\AdminServices.cs" />
     <Compile Include="Services\AgentServices.cs" />
     <Compile Include="Services\AuthService.cs" />
     <Compile Include="Services\ClientServices.cs" />
+    <Compile Include="Services\HotelService.cs" />
+    <Compile Include="Services\UserService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">

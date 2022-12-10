@@ -58,6 +58,16 @@
     <Property Name="agentid" Type="int" Nullable="false" />
     <Property Name="hotelid" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="Logins">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="hostid" Type="int" Nullable="false" />
+    <Property Name="loginaccess" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Createdate" Type="datetime" Nullable="false" />
+    <Property Name="Expiredate" Type="datetime" />
+  </EntityType>
   <EntityType Name="Package">
     <Key>
       <PropertyRef Name="packageid" />
@@ -86,7 +96,6 @@
     <Property Name="usertype" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="usermail" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="username" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="hostid" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Userbox">
     <Key>
@@ -120,6 +129,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_Logins_Host">
+    <End Role="Host" Type="Self.Host" Multiplicity="1" />
+    <End Role="Logins" Type="Self.Logins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Host">
+        <PropertyRef Name="hostid" />
+      </Principal>
+      <Dependent Role="Logins">
+        <PropertyRef Name="hostid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Token_Client">
     <End Role="Client" Type="Self.Client" Multiplicity="1" />
     <End Role="Token" Type="Self.Token" Multiplicity="*" />
@@ -132,18 +153,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_User_Host">
-    <End Role="Host" Type="Self.Host" Multiplicity="1" />
-    <End Role="User" Type="Self.User" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Host">
-        <PropertyRef Name="hostid" />
-      </Principal>
-      <Dependent Role="User">
-        <PropertyRef Name="hostid" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <EntityContainer Name="TMSAPIModelStoreContainer">
     <EntitySet Name="Agent" EntityType="Self.Agent" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Booking" EntityType="Self.Booking" Schema="dbo" store:Type="Tables" />
@@ -151,6 +160,7 @@
     <EntitySet Name="Host" EntityType="Self.Host" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Hotel" EntityType="Self.Hotel" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Hotelbox" EntityType="Self.Hotelbox" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Logins" EntityType="Self.Logins" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Package" EntityType="Self.Package" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Token" EntityType="Self.Token" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
@@ -163,13 +173,13 @@
       <End Role="Package" EntitySet="Package" />
       <End Role="Booking" EntitySet="Booking" />
     </AssociationSet>
+    <AssociationSet Name="FK_Logins_Host" Association="Self.FK_Logins_Host">
+      <End Role="Host" EntitySet="Host" />
+      <End Role="Logins" EntitySet="Logins" />
+    </AssociationSet>
     <AssociationSet Name="FK_Token_Client" Association="Self.FK_Token_Client">
       <End Role="Client" EntitySet="Client" />
       <End Role="Token" EntitySet="Token" />
-    </AssociationSet>
-    <AssociationSet Name="FK_User_Host" Association="Self.FK_User_Host">
-      <End Role="Host" EntitySet="Host" />
-      <End Role="User" EntitySet="User" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

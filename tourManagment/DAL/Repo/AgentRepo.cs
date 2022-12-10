@@ -54,8 +54,9 @@ namespace DAL.Repo
         }
         */
 
-        TMSAPIEntities db;
-        public AgentRepo(TMSAPIEntities db)
+        TMSAPIEntities1 db;
+        
+        public AgentRepo(TMSAPIEntities1 db)
         {
             this.db = db;
         }

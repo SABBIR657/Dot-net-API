@@ -11,12 +11,17 @@ namespace DAL.EF
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Hotel
     {
+        [Required]
         public int hotelid { get; set; }
+        [Required]
         public string hoteltype { get; set; }
+        [Required]
         public string hotellocation { get; set; }
+        [Required]
         public string hotelprice { get; set; }
     }
 }

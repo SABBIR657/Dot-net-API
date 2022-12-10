@@ -11,15 +11,17 @@ namespace DAL.EF
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class User
     {
+        [Required]
         public int userid { get; set; }
+        [Required]
         public string usertype { get; set; }
+        [Required]
+        [EmailAddress]
         public string usermail { get; set; }
         public string username { get; set; }
-        public int hostid { get; set; }
-    
-        public virtual Host Host { get; set; }
     }
 }

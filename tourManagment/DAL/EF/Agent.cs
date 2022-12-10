@@ -21,7 +21,6 @@ namespace DAL.EF
         [EmailAddress]
         public string agentmail { get; set; }
         [Required]
-        [StringLength(8)]
         public string password { get; set; }
         public string agentname { get; set; }
         [Required]

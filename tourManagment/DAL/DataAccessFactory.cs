@@ -12,7 +12,7 @@ namespace DAL
     public class DataAccessFactory
     {
 
-        static TMSAPIEntities db = new TMSAPIEntities();
+        static TMSAPIEntities1 db = new TMSAPIEntities1();
         public static IAuth AuthDataAccess()
         {
             return new AuthRepo(db);
@@ -36,9 +36,31 @@ namespace DAL
         public static IRepository<Agent, int, bool> AgentDataAccess()
         {
             return new AgentRepo(db);
+
         }
 
-        
+        public static IRepo<User, int, User> UserDataAccess()
+        {
+            return new UserRepo();
+        }
+
+        public static IHotelRepo<Hotel, int, bool> HotelDataAccess()
+        {
+            return new HotelRepo();
+        }
+
+        public static IRepository<Host, int, bool> HostDataAccess()
+        {
+            return new AdminRepo(db);
+
+        }
+
+        public static IRepo<Login, string, Login> LoginDataAccess()
+        {
+            return new LoginRepo();
+        }
+
+
 
 
 

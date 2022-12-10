@@ -10,9 +10,9 @@ namespace DAL.Repo
 {
     internal class packageRepo : IPackageRepo<Package, int>
     {
-        TMSAPIEntities db;
+        TMSAPIEntities1 db;
 
-        public packageRepo(TMSAPIEntities db)
+        public packageRepo(TMSAPIEntities1 db)
         {
             this.db = db;
         }

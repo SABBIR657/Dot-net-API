@@ -13,10 +13,10 @@ namespace DAL.EF
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class TMSAPIEntities : DbContext
+    public partial class TMSAPIEntities1 : DbContext
     {
-        public TMSAPIEntities()
-            : base("name=TMSAPIEntities")
+        public TMSAPIEntities1()
+            : base("name=TMSAPIEntities1")
         {
         }
     
@@ -35,5 +35,6 @@ namespace DAL.EF
         public DbSet<Token> Tokens { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Userbox> Userboxes { get; set; }
+        public DbSet<Login> Logins { get; set; }
     }
 }

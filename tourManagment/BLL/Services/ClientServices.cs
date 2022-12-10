@@ -12,7 +12,7 @@ namespace BLL.Services
 {
     public class ClientServices
     {
-        TMSAPIEntities db = new TMSAPIEntities();
+        TMSAPIEntities1 db = new TMSAPIEntities1();
 
         public static PackageModel Get(int uid)
         {

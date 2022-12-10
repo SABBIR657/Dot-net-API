@@ -11,21 +11,30 @@ namespace DAL.EF
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Host
     {
         public Host()
         {
-            this.Users = new HashSet<User>();
+            this.Logins = new HashSet<Login>();
         }
-    
+
+        [Required]
         public int hostid { get; set; }
+        [Required]
         public string username { get; set; }
+        [Required]
         public string address { get; set; }
+        [Required]
+        [EmailAddress]
         public string email { get; set; }
+        [Required]
+        [StringLength(11)]
         public string mobilenumber { get; set; }
+        [Required]
         public string password { get; set; }
     
-        public virtual ICollection<User> Users { get; set; }
+        public virtual ICollection<Login> Logins { get; set; }
     }
 }

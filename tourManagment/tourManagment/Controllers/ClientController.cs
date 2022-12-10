@@ -12,7 +12,7 @@ namespace tourManagment.Controllers
 {
     public class ClientController : ApiController
     {
-        
+       
         [Route("api/client/home")]
         [HttpGet]
         public HttpResponseMessage Get()

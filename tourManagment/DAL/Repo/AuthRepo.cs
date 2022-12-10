@@ -10,9 +10,9 @@ namespace DAL.Repo
 {
     public class AuthRepo : IAuth
     {
-        TMSAPIEntities db;
+        TMSAPIEntities1 db;
 
-        public AuthRepo(TMSAPIEntities db)
+        public AuthRepo(TMSAPIEntities1 db)
         {
             this.db = db;
         }

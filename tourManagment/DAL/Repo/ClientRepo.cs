@@ -49,8 +49,8 @@ namespace DAL.Repo
            return db.Clients.FirstOrDefault(c => c.clientid== id);
         }
         */
-        TMSAPIEntities db;
-        public ClientRepo(TMSAPIEntities db)
+        TMSAPIEntities1 db;
+        public ClientRepo(TMSAPIEntities1 db)
         {
             this.db = db;
         }

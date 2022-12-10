@@ -11,15 +11,11 @@ namespace DAL.EF
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Booking
     {
-        
         public int bookingid { get; set; }
-        [Required]
         public int clientid { get; set; }
-        [Required]
         public int packageid { get; set; }
     
         public virtual Client Client { get; set; }
